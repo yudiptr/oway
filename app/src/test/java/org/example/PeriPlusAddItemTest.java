@@ -30,7 +30,7 @@ public class PeriPlusAddItemTest {
         // WebDriverManager.chromedriver().setup();
 
         // For Chrome 132
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\YUDI\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
         
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
@@ -52,7 +52,8 @@ public class PeriPlusAddItemTest {
         WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("filter_name")));
         searchBox.sendKeys("Naruto");
         WebElement searchButton = driver.findElement(By.xpath("//button[@type='submit']"));
-        searchButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", searchButton);
 
         WebElement firstProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".row.row-category-grid .single-product")));
         Assert.assertNotNull(firstProduct, "Product search failed: No products found.");
@@ -62,7 +63,7 @@ public class PeriPlusAddItemTest {
         driver.get(productLink);
 
         WebElement addToCartButton = driver.findElement(By.cssSelector(".btn-add-to-cart"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver;
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         js.executeScript("arguments[0].click();", addToCartButton);
 

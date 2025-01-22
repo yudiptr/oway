@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PeriPlusTrialApp {
     public static void main(String[] args){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\YUDI\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
 
 
         ChromeOptions options = new ChromeOptions();
@@ -42,7 +42,8 @@ public class PeriPlusTrialApp {
         searchBox.sendKeys("Naruto");
 
         WebElement searchButton = driver.findElement(By.xpath("//button[@type='submit']"));
-        searchButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", searchButton);
 
         WebElement firstProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".row.row-category-grid .single-product")));
 
@@ -53,7 +54,7 @@ public class PeriPlusTrialApp {
         driver.get(productLink);
 
         WebElement addToCartButton = driver.findElement(By.cssSelector(".btn-add-to-cart"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver;
 
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
 
