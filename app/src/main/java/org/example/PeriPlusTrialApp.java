@@ -75,8 +75,5 @@ public class PeriPlusTrialApp {
         } catch (TimeoutException e) {
             System.out.println("Success modal did not appear.");
         }
-
-
-        
     }
 }
