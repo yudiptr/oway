@@ -34,6 +34,7 @@ public class PeriPlusAddItemTest {
         // WebDriverManager.chromedriver().setup();
 
         // For Chrome > 112, path to chromedriver for specific version, download manual through chrome
+        logger.info("Setting up the WebDriver");
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
 
