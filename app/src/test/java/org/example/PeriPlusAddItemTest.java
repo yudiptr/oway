@@ -21,27 +21,28 @@ import java.time.Duration;
 
 public class PeriPlusAddItemTest {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private WebDriverWait wait;
+
 
     @BeforeTest
     public void setUp() {
-
         // For Chrome < 112
         // WebDriverManager.chromedriver().setup();
 
         // For Chrome 132
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
-        
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
-        options.addArguments("--headless");
+
+        options.addArguments("--remote-allow-origins=*");
+      
         driver = new ChromeDriver(options);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
 
     @Test
     public void testAddToCart() {
         driver.get("https://www.periplus.com/account/Login");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         usernameField.sendKeys("yudiputrasabri789@gmail.com");
         WebElement passwordField = driver.findElement(By.name("password"));
