@@ -16,17 +16,12 @@ repositories {
 }
 
 dependencies {
-    // Use TestNG framework, also requires calling test.useTestNG() below
-    testImplementation libs.testng
-
-    // This dependency is used by the application.
-    implementation libs.guava
-
-    implementation 'org.seleniumhq.selenium:selenium-java:+'
-    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:+'
-    implementation 'io.github.bonigarcia:webdrivermanager:+'
-
+    testImplementation 'org.testng:testng:7.8.0' 
+    implementation 'com.google.guava:guava:33.0.0-jre'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.15.0'
 }
+
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
